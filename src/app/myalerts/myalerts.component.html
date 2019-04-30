@@ -1,3 +1,27 @@
-<p>
-  myalerts works!
-</p>
+
+<table id="myAlerts" class="table">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>FX Pair</th>
+        <th>Alert Price</th>
+        <th>Delete</th>
+      </tr>
+      <tr *ngFor="let alert of alertModel; index as i">
+        <td>
+          {{i + 1}}
+        </td>
+        <td>
+          {{alert.currency.slice(0,3).toUpperCase()}}/{{alert.currency.slice(3,8).toUpperCase()}}
+        </td>
+        <td>
+          {{alert.price}}
+        </td>
+        <td>
+          <button class="delete" title="delete hero"
+          (click)="delete(alert)">x
+          </button>
+        </td>
+      </tr>
+    </thead>
+  </table>

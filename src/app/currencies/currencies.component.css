@@ -1,0 +1,16 @@
+/* html { background-color: black; } */
+.fill{min-height: 100vh;background: rgb(102, 84, 84)}
+.card{min-height: 30vh;}
+.card:hover {
+    animation:shadow 0.3s;
+    animation-fill-mode: forwards;
+    /* box-shadow: 0 0.5em 0.5em -0.4em grey;
+    transform: scale(1.01); */
+}
+@keyframes shadow{
+    to{box-shadow: 0em 0em 0.5em 0.2em rgb(32, 14, 14);transform: scale(1.05);}
+}
+.card-title{font-size: 20px;font-family: 'Arial'}
+.card-text{color:red;font-size: 50px;font-family: Arial;font-weight: bolder}
+.submit.btn{color:white;padding: 4px; margin: 10px}
+.submit.btn:hover{color:white;padding: 4px; margin: 10px;background-color: black}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+    <meta name="viewport" content="width =device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+    <!-- <script type="text/javascript" src="authenticate.js"></script> -->
+    <!-- required scripts for IE --> 
+    <!-- [if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>PriceBuzz</title>
+  </head>
+  <body>
+    <div class="container login p-5">
+      <div class="row">
+          <div class="col-lg shadow bg-white rounded block">
+            <form id="frm">
+                Username: <input id="username" name="username" type="username" class="form-control">
+                Password: <input id="password" name="password" type="password" class="form-control">
+                <div><br></div>
+              <a class="btn btn-primary btn-dark" style="color: aliceblue" class="btn btn-primary" onclick="submitValues()">Submit</a>
+              <div id="response"></div>
+              <div><br></div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+    var xmlhttp
+
+    // function submitValues(){
+    //     document.getElementById("frm").submit();
+    // }
+
+    function submitValues ()
+    {
+    xmlhttp = GetXmlHttpObject();
+    if (xmlhttp == null)
+    {
+        alert ("Your browser does not support XMLHTTP!");
+        return;
+    };
+
+    var url = "login.php";
+    xmlhttp.onreadystatechange = stateChanged;
+    xmlhttp.open ("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    username = document.getElementById("username").value;
+    password = document.getElementById("password").value;
+    sendData = "username="+username+"&password="+password
+    xmlhttp.send(sendData);
+    }
+
+    function stateChanged()
+    {
+    // The callback function processes the response from the server	
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+    {
+        // the HTML DOM is updated
+        window.location.replace('www.google.com');
+        document.getElementById ("response").innerHTML = xmlhttp.responseText;
+    }
+    }
+
+    function GetXmlHttpObject()
+    {
+    // Create an XMLHttpRequest object?
+        
+    if (window.XMLHttpRequest)
+    {  // code for IE7+, Firefox, Chrome, Opera, Safari
+        return new XMLHttpRequest();
+    }
+    if (window.ActiveXObject)
+    { // code for IE6, IE5
+        return new ActiveXObject ("Microsoft.XMLHTTP");
+    }
+    return null;
+    }
+</script>

@@ -1,0 +1,4 @@
+#logo{color:rgb(235, 93, 93)}
+.nav-link.active-nav:focus{color:white}
+.nav-link.active-nav{background-color: grey; color:white}
+.user.nav-link{color:white}
